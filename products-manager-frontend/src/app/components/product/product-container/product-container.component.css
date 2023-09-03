@@ -1,0 +1,21 @@
+.container {
+    display: grid;
+    grid-template-columns: 15% auto 25%;
+}
+
+.container div {
+    margin: 5px;
+}
+
+.add-product {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #cccc;
+}
+
+.content {
+    border-radius: 5px;
+    background: #ececec;
+    box-shadow: -3px -3px 5px rgba(255,255,255,.5), 3px 3px 5px #aaa9ad;
+    width: 110%;
+    padding: 5px 18px;
+}
