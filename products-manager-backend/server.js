@@ -1,8 +1,17 @@
+const cors = require('cors')
 const express = require("express")
 const productRepository = require('./product-repository')
 
+const corsOptions = {
+    origin: 'http://localhost:4200', 
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+};
+  
 const app = express()
 app.use(express.json())
+app.use(cors(corsOptions))
 
 app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*')
@@ -56,8 +65,6 @@ app.post('/products', (req, res) => {
         return res.status(400).json({ message: 'Body is required'})
     }
 
-    // should validate fields, but not the purpouse
-
     const productSaved = productRepository.add(product)
 
     res.status(201).json(productSaved)
@@ -70,8 +77,6 @@ app.put('/products', (req, res) => {
         return res.status(400).json({ message: 'Body is required'})
     }
 
-    // should validate fields, but not the purpouse
-
     const productUpdated = productRepository.update(product)
 
     res.status(200).json(productUpdated)
@@ -82,5 +87,5 @@ app.put('/products', (req, res) => {
 // start server
 const port = process.env.PORT || 3030
 app.listen(port, () => {
-    console.log('Serasa API is working on port: ', port)
+    console.log('products API is working on port: ', port)
 })
