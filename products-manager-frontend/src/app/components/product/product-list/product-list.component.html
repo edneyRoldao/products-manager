@@ -1,4 +1,8 @@
 <div>
     <h3>Products</h3>
-    <app-product-item></app-product-item>
+    
+    <ng-container *ngFor="let item of products">
+        <app-product-item [product]="item"></app-product-item>
+    </ng-container>
+
 </div>

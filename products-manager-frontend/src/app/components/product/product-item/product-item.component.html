@@ -1,12 +1,14 @@
 <div class="row">
     <div class="block">
-        <img src="https://mdbootstrap.com/img/Photos/Others/placeholder7.webp" alt="">
+        <img [src]="product.link" alt="">
         <div>
-            <h2>Product Name</h2>
-            <p>catwgory</p>
+            <h2>{{ product.name | titlecase }}</h2>
+            <p>{{ product.category }}</p>
+            <p>{{ product.price | prdprice }}</p>
         </div>
         <div class="edit-product">
-            <a href="/products/form" class="btn"> Edit </a>
-        </div>            
+            <a style="background: blue; margin-bottom: 5px;" href="/products/form?productId={{product.id}}" class="btn"> Edit </a>
+            <a style="background: red;" (click)="deleteProduct()" class="btn"> Delete </a>
+        </div> 
     </div>
 </div>

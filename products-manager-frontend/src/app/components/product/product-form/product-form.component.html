@@ -1,1 +1,43 @@
-<p>product-form works!</p>
+<div class="main">
+    <div class="container">
+        <div></div>
+        <div>
+            <div class="content">
+                <div>
+                    <a href="/products">products list</a>
+                </div>
+                <h3> {{ isUpdate ? 'Update Product' : 'New Product'}} </h3>
+                <form (ngSubmit)="insertProduct()" [formGroup]="productForm" #formReference="ngForm">
+                    <div>
+                        <label for="name">Name:</label>
+                        <input type="text" placeholder="product name" required formControlName="nameCtrl">
+                        <div *ngIf="name.invalid && formReference.submitted" class="prod-form-error">
+                            <p *ngIf="name.errors?.['required']">product name is required</p>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="category">Category:</label>
+                        <input type="text" placeholder="product category" required formControlName="categoryCtrl">
+                        <div *ngIf="category.invalid && formReference.submitted" class="prod-form-error">
+                            <p *ngIf="category.errors?.['required']">product category is required</p>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="price">Price:</label>
+                        <input type="text" placeholder="product price" required formControlName="priceCtrl">
+                        <div *ngIf="price.invalid && formReference.submitted" class="prod-form-error">
+                            <p *ngIf="price.errors?.['required']">product price is required</p>                            
+                        </div>
+                    </div>
+                    <div>
+                        <label for="image">Image:</label>
+                        <input type="text" placeholder="product image link" formControlName="imageLinkCtrl">
+                    </div>
+                    <div>
+                        <button type="submit">{{ isUpdate ? 'Update' : 'Add'}}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
